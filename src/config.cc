@@ -33,7 +33,7 @@ enum context_type {
 };
 
 Config::Config():
-	key_comb(NULL), collapse(false), hide_done(false), hide_percent(false),
+	key_comb(NULL), collapse(false), hide_done(false), hide_cancelled(true), hide_percent(false),
 	visual_tree(false), bold_parent(true), loop_move(false),
 	days_warn_deadline(7), us_dates(false), old_sched(true)
 {
@@ -140,6 +140,9 @@ void Config::getGeneralOption(wstring& option, wstring& value)
 
 	if (L"hide_done" == option)
 		hide_done = isYes(value);
+
+	if (L"hide_cancelled" == option)
+		hide_cancelled = isYes(value);
 
 	if (L"hide_percent" == option)
 		hide_percent = isYes(value);
@@ -588,6 +591,11 @@ bool Config::getCollapse()
 bool& Config::getHideDone()
 {
 	return hide_done;
+}
+
+bool& Config::getHideCancelled()
+{
+	return hide_cancelled;
 }
 
 bool Config::getHidePercent()

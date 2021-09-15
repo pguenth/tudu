@@ -93,6 +93,7 @@ public:
 	void getActionList(action_list& list);
 	bool getCollapse();
 	bool& getHideDone();
+	bool& getHideCancelled();
 	bool getHidePercent();
 	bool getVisualTree();
 	bool getBoldParent();
@@ -130,6 +131,7 @@ private:
 	action_list action_keys;
 	bool collapse;
 	bool hide_done;
+	bool hide_cancelled;
 	bool hide_percent;
 	bool visual_tree;
 	bool bold_parent;

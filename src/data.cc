@@ -72,6 +72,11 @@ bool& ToDo::done()
 	return _done;
 }
 
+bool& ToDo::cancelled()
+{
+	return _cancelled;
+}
+
 int& ToDo::priority()
 {
 	return _priority;

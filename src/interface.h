@@ -83,6 +83,7 @@ private:
 	void move_up();
 	void move_down();
 	void done();
+	void cancelled();
 	void del();
 	void delDeadline();
 	void delPriority();
@@ -105,6 +106,7 @@ private:
 	void downText();
 	void collapse();
 	void hide_done();
+	void hide_cancelled();
 	void command_line();
 	bool _search();
 	void search();

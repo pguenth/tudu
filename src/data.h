@@ -54,6 +54,7 @@ public:
 	Date& sched();
 	int& schedPosition();
 	bool& done();
+	bool& cancelled();
 	int& priority();
 	set<wstring>& getCategories();
 	wstring getCategoriesStr();
@@ -68,6 +69,7 @@ protected:
 	int  _order; // unic number that shows the order of the todo
 	wstring title;
 	bool _done;
+	bool _cancelled;
 	Date _deadline;
 	Date _sched;
 	int sched_position; // position on the sched list, use for sort the list

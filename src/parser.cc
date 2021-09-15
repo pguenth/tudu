@@ -262,6 +262,11 @@ void Parser::patt(iToDo& iterator)
 		if (L"\"yes\"" == data) iterator->getCollapse() = true;
 		else iterator->getCollapse() = false;
 	}
+	else if (L"cancelled" == name)
+	{
+		if (L"\"yes\"" == data) iterator->cancelled() = true;
+		else iterator->cancelled() = false;
+	}
 }
 
 
@@ -308,6 +313,9 @@ void Writer::_save()
 		else file << "no";
 		file << "\" collapse=\"";
 		if ((*i)->getCollapse()) file << "yes";
+		else file << "no";
+		file << "\" cancelled=\"";
+		if ((*i)->cancelled()) file << "yes";
 		else file << "no";
 		file << "\">" << endl;
 		if (L"" != (*i)->getTitle())

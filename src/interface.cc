@@ -95,6 +95,7 @@ void Interface::main()
 			if (L"pasteUp" == action) pasteUp();
 			if (L"pasteChild" == action) pasteChild();
 			if (L"done" == action) done();
+			if (L"cancelled" == action) cancelled();
 			if (L"addTodo" == action) addLine();
 			if (L"addTodoUp" == action) addLineUp();
 			if (L"editTitle" == action) modifyLine();
@@ -109,6 +110,7 @@ void Interface::main()
 			if (L"upText" == action) upText();
 			if (L"collapse" == action) collapse();
 			if (L"hideDone" == action) hide_done();
+			if (L"hideCancelled" == action) hide_cancelled();
 			if (L"search" == action) search();
 			if (L"searchNext" == action) search_next();
 			if (L"searchPrev" == action) search_prev();
@@ -321,6 +323,9 @@ bool Interface::isHide(iToDo& todo)
 	/* if is done */
 	bool hideDone = (config.getHideDone() && todo->done());
 
+	/* if is cancelled */
+	bool hideCancelled = (config.getHideCancelled() && todo->cancelled());
+
 	/* if is in hidden category */
 	bool hideCat = false;
 	set<wstring>& categories = todo->getCategories();
@@ -337,7 +342,7 @@ bool Interface::isHide(iToDo& todo)
 		hideCat = true;
 	}
 		
-	return hideDone || hideCat;
+	return hideDone || hideCancelled ||	hideCat;
 }
 
 void Interface::inherit()
@@ -546,6 +551,17 @@ void Interface::done()
 		cursor->done() = false;
 	else
 		cursor->done() = true;
+	if (isHide(cursor))
+		down();
+	drawTodo();
+}
+
+void Interface::cancelled()
+{
+	if (cursor->cancelled())
+		cursor->cancelled() = false;
+	else
+		cursor->cancelled() = true;
 	if (isHide(cursor))
 		down();
 	drawTodo();
@@ -879,6 +895,15 @@ void Interface::hide_done()
 	config.getHideDone() = !config.getHideDone();
 	if (isHide(cursor)) up();
 	if (!config.getHideDone() && cursor->getTitle().empty())
+		del();
+	drawTodo();
+}
+
+void Interface::hide_cancelled()
+{
+	config.getHideCancelled() = !config.getHideCancelled();
+	if (isHide(cursor)) up();
+	if (!config.getHideCancelled() && cursor->getTitle().empty())
 		del();
 	drawTodo();
 }
