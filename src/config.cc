@@ -37,7 +37,7 @@ Config::Config():
 	dim_done(false), dim_cancelled(true), hide_percent(false),
 	visual_tree(false), bold_parent(true), loop_move(false),
 	days_warn_deadline(7), us_dates(false), old_sched(true),
-	symbol_done('X'), symbol_cancelled('-')
+	autocollapse(false), symbol_done('X'), symbol_cancelled('-')
 {
 	category_length = DEFAULT_CATEGORY_LENGTH;
 }
@@ -139,6 +139,9 @@ void Config::getGeneralOption(wstring& option, wstring& value)
 {
 	if (L"collapse" == option)
 		collapse = isYes(value);
+
+	if (L"autocollapse" == option)
+		autocollapse = isYes(value);
 
 	if (L"hide_done" == option)
 		hide_done = isYes(value);
@@ -600,6 +603,11 @@ int Config::getContext(wstring& str)
 bool Config::getCollapse()
 {
 	return collapse;
+}
+
+bool Config::getAutocollapse()
+{
+	return autocollapse;
 }
 
 bool& Config::getHideDone()

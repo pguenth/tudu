@@ -92,6 +92,7 @@ public:
 	void clearKeys();
 	void getActionList(action_list& list);
 	bool getCollapse();
+	bool getAutocollapse();
 	bool& getHideDone();
 	bool& getHideCancelled();
 	bool getDimDone();
@@ -176,6 +177,7 @@ private:
 	bool genWindowTree(windows_defs& coor, int height, int x, int y);
 	bool _genWindowCoor(int lines, int cols, windows_defs& coor);
 
+	bool autocollapse;
 	wchar_t symbol_done;
 	wchar_t symbol_cancelled;
 };

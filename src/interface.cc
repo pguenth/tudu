@@ -553,6 +553,8 @@ void Interface::done()
 		cursor->done() = true;
 	if (isHide(cursor))
 		down();
+	if (config.getAutocollapse())
+		cursor->getCollapse() = true;
 	drawTodo();
 }
 
@@ -564,6 +566,8 @@ void Interface::cancelled()
 		cursor->cancelled() = true;
 	if (isHide(cursor))
 		down();
+	if (config.getAutocollapse())
+		cursor->getCollapse() = true;
 	drawTodo();
 }
 

@@ -3,6 +3,7 @@
 
 [ general ]
 collapse        = no  # collapse by default
+autocollapse    = no  # collapse when a task gets marked as done or cancelled
 hide_done       = no  # Whether to hide tasks marked as done.
 hide_cancelled  = no  # Whether to hide tasks marked as cancelled.
 hide_percent    = no  # Whether to hide percentage display on tasks
