@@ -94,6 +94,8 @@ public:
 	bool getCollapse();
 	bool& getHideDone();
 	bool& getHideCancelled();
+	bool getDimDone();
+	bool getDimCancelled();
 	bool getHidePercent();
 	bool getVisualTree();
 	bool getBoldParent();
@@ -132,6 +134,8 @@ private:
 	bool collapse;
 	bool hide_done;
 	bool hide_cancelled;
+	bool dim_done;
+	bool dim_cancelled;
 	bool hide_percent;
 	bool visual_tree;
 	bool bold_parent;

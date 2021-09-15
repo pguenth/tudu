@@ -377,6 +377,11 @@ void Screen::drawTask(int line, int depth, ToDo& t, bool isCursor)
 
 	/* identation */
 	for (int i = 0; i < depth; ++i) wtree->_addstr(L"    ");
+
+	if ((t.cancelled() && config.getDimCancelled())
+			|| (t.done() && config.getDimDone()))
+		wtree->_attron(A_DIM);
+
 	if (config.getVisualTree())
 		if (t.haveChild())
 		{
@@ -498,6 +503,10 @@ void Screen::drawTask(int line, int depth, ToDo& t, bool isCursor)
 			wdeadline->_attroff(COLOR_TREE);
 		wdeadline->_refresh();
 	}
+
+	if ((t.cancelled() && config.getDimCancelled())
+			|| (t.done() && config.getDimDone()))
+		wtree->_attroff(A_DIM);
 }
 
 void Screen::drawText(Text &t)

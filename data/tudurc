@@ -16,6 +16,8 @@ days_warn       = 2   # how many days before the task is due
 us_dates        = no  # use US date format (mm/dd/yyyy). 
                       # by default it uses dd/mm/yyyy
 old_sched       = yes # display past sched task on the scheduler 
+dim_done        = no  # display tasks marked as done with dim colors
+dim_cancelled   = yes # display tasks marked as cancelled with dim colors
 
 # Location of the xml file, use the full path
 # By default ~/.tudu.xml will be use
