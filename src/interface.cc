@@ -427,8 +427,18 @@ void Interface::up()
 {
 	iToDo aux = cursor;
 
-	if (aux.begin() && config.getLoopMove())
-		while (++aux);
+	if (aux.begin())
+	{
+		if (aux.depth() && config.getLevelMove())
+		{
+			left();
+			return;
+		}
+		else if (config.getLoopMove())
+		{
+			while (++aux);
+		}
+	}
 
 	while (--aux && isHide(aux));
 	if (!isHide(aux))
@@ -452,8 +462,19 @@ void Interface::down()
 
 	while (++aux)
 	{
-		if (aux.end() && config.getLoopMove())
-			while (--aux);
+		if (aux.end())
+		{
+			if (aux.depth() && config.getLevelMove())
+			{
+				left();
+				down();
+				return;
+			}
+			else if (config.getLoopMove())
+			{
+				while (--aux);
+			}
+		}
 		if (!isHide(aux) || (aux == cursor)) break;
 	}
 

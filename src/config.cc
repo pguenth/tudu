@@ -35,7 +35,7 @@ enum context_type {
 Config::Config():
 	key_comb(NULL), collapse(false), hide_done(false), hide_cancelled(true),
 	dim_done(false), dim_cancelled(true), hide_percent(false),
-	visual_tree(false), bold_parent(true), loop_move(false),
+	visual_tree(false), bold_parent(true), loop_move(false), level_move(false),
 	days_warn_deadline(7), us_dates(false), old_sched(true),
 	autocollapse(false), symbol_done('X'), symbol_cancelled('-')
 {
@@ -163,6 +163,9 @@ void Config::getGeneralOption(wstring& option, wstring& value)
 
 	if (L"bold_parent" == option)
 		bold_parent = isYes(value);
+
+	if (L"level_move" == option)
+		level_move = isYes(value);
 
 	if (L"loop_move" == option)
 		loop_move = isYes(value);
@@ -648,6 +651,11 @@ bool Config::getBoldParent()
 bool Config::getLoopMove()
 {
 	return loop_move;
+}
+
+bool Config::getLevelMove()
+{
+	return level_move;
 }
 
 bool Config::getOldSched()

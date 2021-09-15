@@ -113,6 +113,7 @@ public:
 	void genWindowCoor(int lines, int cols, windows_defs& coor);
 	void getColorList(color_t* color_list[], short int& length);
 	void getColorPair(short int win, short int& foreground, short int& background);
+	bool getLevelMove();
 private:
 	typedef struct {
 		window_type window;
@@ -143,6 +144,7 @@ private:
 	bool visual_tree;
 	bool bold_parent;
 	bool loop_move;
+	bool level_move;
 	int  days_warn_deadline;
 	bool us_dates;
 	bool old_sched;
