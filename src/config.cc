@@ -36,7 +36,8 @@ Config::Config():
 	key_comb(NULL), collapse(false), hide_done(false), hide_cancelled(true),
 	dim_done(false), dim_cancelled(true), hide_percent(false),
 	visual_tree(false), bold_parent(true), loop_move(false),
-	days_warn_deadline(7), us_dates(false), old_sched(true)
+	days_warn_deadline(7), us_dates(false), old_sched(true),
+	symbol_done('X'), symbol_cancelled('-')
 {
 	category_length = DEFAULT_CATEGORY_LENGTH;
 }
@@ -184,6 +185,12 @@ void Config::getGeneralOption(wstring& option, wstring& value)
 
 	if (L"editor" == option)
 		wcstombs(editor, value.c_str(), 64);
+
+	if (L"symbol_done" == option)
+		symbol_done = value[0];
+
+	if (L"symbol_cancelled" == option)
+		symbol_cancelled = value[0];
 }
 
 void Config::insertKeyMap(key_map& k, wstring action, wstring keys)
@@ -658,6 +665,16 @@ wstring& Config::getTuduFile()
 wstring& Config::getSortOrder()
 {
 	return sort_order;
+}
+
+wchar_t Config::getSymbolCancelled()
+{
+	return symbol_cancelled;
+}
+
+wchar_t Config::getSymbolDone()
+{
+	return symbol_done;
 }
 
 char* Config::getEditor()

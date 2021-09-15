@@ -19,6 +19,9 @@ old_sched       = yes # display past sched task on the scheduler
 dim_done        = no  # display tasks marked as done with dim colors
 dim_cancelled   = yes # display tasks marked as cancelled with dim colors
 
+symbol_done     = X   # symbol used for done
+symbol_cancelled    = - # symbol used for cancelled tasks
+
 # Location of the xml file, use the full path
 # By default ~/.tudu.xml will be use
 #tudu_file = /home/foobar/.tudu.xml

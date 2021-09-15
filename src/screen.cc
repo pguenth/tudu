@@ -397,11 +397,13 @@ void Screen::drawTask(int line, int depth, ToDo& t, bool isCursor)
 
 	if (t.done())
 	{
-		wtree->_addstr("[X] ");
+		wchar_t sym[5] = {'[', config.getSymbolDone(), ']', ' ', '\0'};
+		wtree->_addstr(sym);
 	}
 	else if (t.cancelled())
 	{
-		wtree->_addstr("[-] ");
+		wchar_t sym[5] = {'[', config.getSymbolCancelled(), ']', ' ', '\0'};
+		wtree->_addstr(sym);
 	}
 	else if (!t.haveChild() || config.getHidePercent())
 	{

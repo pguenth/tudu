@@ -106,6 +106,8 @@ public:
 	wstring& getTuduFile();
 	wstring& getSortOrder();
 	char* getEditor();
+	wchar_t getSymbolDone();
+	wchar_t getSymbolCancelled();
 	int getCategoryLength();
 	void genWindowCoor(int lines, int cols, windows_defs& coor);
 	void getColorList(color_t* color_list[], short int& length);
@@ -173,6 +175,9 @@ private:
 	bool genWindowWidths(int row_index, int cols, windows_defs& coor, int width[]);
 	bool genWindowTree(windows_defs& coor, int height, int x, int y);
 	bool _genWindowCoor(int lines, int cols, windows_defs& coor);
+
+	wchar_t symbol_done;
+	wchar_t symbol_cancelled;
 };
 
 #endif
